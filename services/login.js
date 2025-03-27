@@ -29,7 +29,7 @@ exports.login = async (req, res) => {
       secret,
       { expiresIn, algorithm: algorithms[0] }
     );
-    res.cc("登录成功", 0, { token:`Bearer ${token}` });
+    res.cc("登录成功", 0, { token: `Bearer ${token}` });
   } catch (error) {
     return res.cc(error);
   }

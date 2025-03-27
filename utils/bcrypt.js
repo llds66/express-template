@@ -1,14 +1,15 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 
 /**
  * 加密密码
- * @param {string} 需要被加密的密码
- * @returns {string} - 加密后的密码
+ * @param {string} password - 需要被加密的密码
+ * @returns {Promise<string>} - 加密后的密码
  */
 exports.hashPassword = async (password) => {
   try {
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const salt = await bcrypt.genSalt(saltRounds);
+    const hashedPassword = await bcrypt.hash(password, salt);
     return hashedPassword;
   } catch (error) {
     console.error(error);
@@ -20,14 +21,13 @@ exports.hashPassword = async (password) => {
  * 校验密码
  * @param {string} password - 需要验证的密码
  * @param {string} hashedPassword - 加密后的密码
- * @returns {boolean} - 密码是否匹配
+ * @returns {Promise<boolean>} - 密码是否匹配
  */
 exports.comparePassword = async (password, hashedPassword) => {
   try {
-    const isMatch = await bcrypt.compare(password, hashedPassword);
-    return isMatch;
+    return await bcrypt.compare(password, hashedPassword);
   } catch (error) {
     console.error(error);
     throw new Error("Error comparing password");
   }
-}
+};
