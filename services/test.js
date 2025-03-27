@@ -90,3 +90,45 @@ exports.deleteTest = async (req, res) => {
     res.cc(error.message);
   }
 };
+
+/**
+ * 单文件上传
+ * @param {object} req.file - 上传的文件
+ */
+exports.singleUpload = async (req, res) => {
+  const addFile = "INSERT INTO table_2 SET ?";
+  try {
+    // console.log(req.file.filename);
+    // console.log(req.body.other);
+    const [result] = await db.query(addFile, { image: req.file.filename });
+    if (result.affectedRows !== 1) {
+      return res.cc("上传失败", 1);
+    }
+    return res.cc("上传成功", 0);
+  } catch (error) {
+    res.cc(error.message);
+  }
+};
+
+/**
+ * 多文件上传
+ * @param {object} req.file - 上传的文件
+ */
+exports.multipleUpload = async (req, res) => {
+  const addFile = "INSERT INTO table_3 SET ?";
+
+  try {
+    // console.log(req.files); // 多文件上传 注意是files，是个数组
+    // console.log(req.body.other);
+    const [result] = await db.query(addFile, {
+      avatar: req.files["avatar"][0].filename,
+      image: req.files["image"][0].filename,
+    });
+    if (result.affectedRows !== 1) {
+      return res.cc("上传失败", 1);
+    }
+    return res.cc("上传成功", 0);
+  } catch (error) {
+    res.cc(error.message);
+  }
+};
