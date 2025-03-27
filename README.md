@@ -1,11 +1,18 @@
 <blockquote align="center">
-<p><br><strong>express-template</strong><br><a href="https://apifox.com/apidoc/shared-0b3d30a8-c14b-450a-a4d2-d2567da3a7c6"><strong>Apifox -></strong></a></p>
+<p><br><strong>express-template 模板</strong><br><a href="https://apifox.com/apidoc/shared-0b3d30a8-c14b-450a-a4d2-d2567da3a7c6"><strong>Apifox -></strong></a></p>
 </blockquote>
 
-## Express-template 开发模板
+## 开发
 
-## 配置 - config/common.js
+### 1.拉取项目
+
+```bash
+git clone git@github.com:llds66/express-template.git
+```
+
+### 2.新建配置文件
 ```javascript
+// config/common.js
 module.exports = {
   // 数据库配置
   dbConfig: {
@@ -25,19 +32,12 @@ module.exports = {
   expiresIn: "8h", // Token 过期时间
 };
 ```
-### 依赖
 
-```json
-"dependencies": {
-    "bcrypt": "^5.1.1",
-    "cors": "^2.8.5",
-    "express": "^4.21.2",
-    "express-jwt": "^8.5.1",
-    "joi": "^17.13.3",
-    "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.14.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.9"
-  }
+### 3.启动
+
+```bash
+# 安装依赖
+npm install
+# 启动
+npm run dev
 ```
