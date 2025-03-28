@@ -2,7 +2,15 @@
 <p><br><strong>express-template 模板</strong><br><a href="https://apifox.com/apidoc/shared-0b3d30a8-c14b-450a-a4d2-d2567da3a7c6"><strong>Apifox -></strong></a></p>
 </blockquote>
 
-## 开发
+## 一、功能
+
++ 登录
++ 注册
++ 增、删、改、查
++ 单文件上传
++ 多文件上传
+
+## 二、开发
 
 ### 1.拉取项目
 
@@ -12,7 +20,7 @@ git clone git@github.com:llds66/express-template.git
 
 ### 2.新建配置文件
 ```javascript
-// config/common.js
+// config/common.js 文件
 module.exports = {
   // 数据库配置
   dbConfig: {
@@ -38,6 +46,11 @@ module.exports = {
 ```bash
 # 安装依赖
 npm install
+```
+
+
+
+```bash
 # 启动
 npm run dev
 ```
